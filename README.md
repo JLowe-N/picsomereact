@@ -1,7 +1,16 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Pic Some React App
+
+## App Description
+
+This React App demonstrates some of the key functionality used in Modern React
+and JavaScript.  Pic Some is the design of an ECommerce site that mocks up
+how React can be used for a Single Page Application (SPA).
+
+
 
 ## Available Scripts
 
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 In the project directory, you can run:
 
 ### `npm start`
