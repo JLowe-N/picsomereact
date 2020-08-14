@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 function Cart() {
     return (
@@ -8,4 +8,4 @@ function Cart() {
     )
 }
 
-export default Cart
+export default Cart;

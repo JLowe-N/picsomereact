@@ -1,4 +1,4 @@
-import React from "react"
+import React from "react";
 
 function Photos() {
     return (
@@ -8,4 +8,4 @@ function Photos() {
     )
 }
 
-export default Photos
+export default Photos;
