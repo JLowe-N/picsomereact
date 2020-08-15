@@ -16,8 +16,20 @@ function AppContextProvider({ children }) {
         fetchData();
     }, []) // Fetch on mount only
 
+    function toggleFavorite(id) {
+        const updatedArray = photos.map(photo => {
+            if (photo.id === id) {
+                console.log(id)
+                console.log(!photo.isFavorite)
+                return { ...photo, isFavorite: !photo.isFavorite }
+            }
+            return photo
+        })
+        setPhotos(() => updatedArray);
+    }
+
     return (
-        <AppContext.Provider value={{ photos }}>
+        <AppContext.Provider value={{ photos, toggleFavorite }}>
             {children}
         </AppContext.Provider>
     )
