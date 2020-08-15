@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react"
 
-const Context = React.createContext();
+const AppContext = React.createContext();
 
 function AppContextProvider({ children }) {
     const [photos, setPhotos] = useState([])
@@ -16,10 +16,10 @@ function AppContextProvider({ children }) {
     }, []) // Fetch on mount only
 
     return (
-        <Context.Provider value={{ photos, setPhotos }}>
+        <AppContext.Provider value={{ photos }}>
             {children}
-        </Context.Provider>
+        </AppContext.Provider>
     )
 }
 
-export { AppContextProvider, Context }
+export { AppContextProvider, AppContext }
