@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 function AppContextProvider({ children }) {
     const [photos, setPhotos] = useState([])
 
+    // Image json does not have alt-text, consider for future update
     const url = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
     useEffect(() => {
         async function fetchData() {

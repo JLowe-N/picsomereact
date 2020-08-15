@@ -3,6 +3,9 @@ import React, { useState } from "react";
 function Image({ imgObj, className }) {
     const [hovered, setHovered] = useState(false);
 
+    const heartIcon = hovered && <i className="ri-heart-line favorite"></i>;
+    const cartIcon = hovered && <i className="ri-add-circle-line cart"></i>;
+
     return (
         <div
             onMouseEnter={() => setHovered(true)}
@@ -10,12 +13,8 @@ function Image({ imgObj, className }) {
             className={`${className} image-container`}
         >
             <img src={imgObj.url} className="image-grid" />
-            {hovered &&
-                <>
-                    <i className="ri-heart-line favorite"></i>
-                    <i className="ri-add-circle-line cart"></i>
-                </>
-            }
+            {heartIcon}
+            {cartIcon}
         </div>
     )
 }
