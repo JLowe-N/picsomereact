@@ -5,7 +5,9 @@ const AppContext = React.createContext();
 function AppContextProvider({ children }) {
     const [photos, setPhotos] = useState([])
     const [cartItems, setCartItems] = useState([])
+    const [totalCost, setTotalCost] = useState(0)
 
+    // Retrieve data with FETCH
     // Image json does not have alt-text, consider for future update
     const url = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
     useEffect(() => {
@@ -31,6 +33,8 @@ function AppContextProvider({ children }) {
         setPhotos(() => updatedArray);
     }
 
+    // Cart, Checkout, Ordering
+
     function addCartItem(img) {
         setCartItems(prevCart => ([...prevCart, img]))
     }
@@ -39,8 +43,12 @@ function AppContextProvider({ children }) {
         setCartItems(prevCart => prevCart.filter(item => item.id !== id))
     }
 
+    useEffect(() => {
+        setTotalCost(() => cartItems.length * 5.99)
+    }, [cartItems]) // Fetch on mount only
+
     return (
-        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, removeCartItem, cartItems }}>
+        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, removeCartItem, cartItems, totalCost }}>
             {children}
         </AppContext.Provider>
     )
