@@ -20,15 +20,19 @@ function Cart() {
         }, 3000)
     }
 
+    const orderDisable = cartItems.length === 0
+    console.log(orderDisable)
+
     return (
-        <main className="cart-page">
+        <main className="cart-page" >
             <h1>Check out</h1>
             {cartItemElements}
-            <p className="total-cost">Total: {totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" })}</p>
+            <p className="total-cost" > Total: {totalCost.toLocaleString("en-US", { style: "currency", currency: "USD" })
+            }</p>
             <div className="order-button">
-                <button onClick={placeOrder}>{isOrdering ? "Ordering..." : "Place Order"}</button>
+                <button disabled={orderDisable} onClick={placeOrder}>{isOrdering ? "Ordering..." : "Place Order"}</button>
             </div>
-        </main>
+        </main >
     )
 }
 
