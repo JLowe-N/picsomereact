@@ -32,6 +32,7 @@ function Cart() {
             <div className="order-button">
                 <button disabled={orderDisable} onClick={placeOrder}>{isOrdering ? "Ordering..." : "Place Order"}</button>
             </div>
+            {orderDisable && <p>You have no items in your cart.</p>}
         </main >
     )
 }
