@@ -4,6 +4,7 @@ const AppContext = React.createContext();
 
 function AppContextProvider({ children }) {
     const [photos, setPhotos] = useState([])
+    const [cartItems, setCartItems] = useState([])
 
     // Image json does not have alt-text, consider for future update
     const url = 'https://raw.githubusercontent.com/bobziroll/scrimba-react-bootcamp-images/master/images.json'
@@ -30,8 +31,13 @@ function AppContextProvider({ children }) {
         setPhotos(() => updatedArray);
     }
 
+    function addCartItem(img) {
+        setCartItems(prevCart => ([...prevCart, img]))
+        console.log(`Adding img to cart ${img.id}`)
+    }
+
     return (
-        <AppContext.Provider value={{ photos, toggleFavorite }}>
+        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, cartItems }}>
             {children}
         </AppContext.Provider>
     )
