@@ -36,8 +36,13 @@ function AppContextProvider({ children }) {
         console.log(`Adding img to cart ${img.id}`)
     }
 
+    function removeCartItem(img) {
+        setCartItems(prevCart => prevCart.filter(item => item.id === !img.id))
+        console.log(`Removing img from cart ${img.id}`)
+    }
+
     return (
-        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, cartItems }}>
+        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, removeCartItem, cartItems }}>
             {children}
         </AppContext.Provider>
     )
