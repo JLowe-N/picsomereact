@@ -11,15 +11,22 @@ function Image({ imgObj, className }) {
         return itemExists
     }
 
-    const heartIcon = (hovered && !imgObj.isFavorite) &&
-        <i className="ri-heart-line favorite" onClick={() => toggleFavorite(imgObj.id)}></i>;
-    const favIcon = imgObj.isFavorite &&
-        <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(imgObj.id)}></i>
+    function heartIcon() {
+        if (imgObj.isFavorite) {
+            return <i className="ri-heart-fill favorite" onClick={() => toggleFavorite(imgObj.id)}></i>
+        } else if (hovered) {
+            return <i className="ri-heart-line favorite" onClick={() => toggleFavorite(imgObj.id)}></i>
+        }
+    }
 
-    const cartIcon = (hovered && !isInCart()) &&
-        <i className="ri-add-circle-line cart" onClick={() => addCartItem(imgObj)}></i>;
-    const inCartIcon = isInCart() &&
-        <i className="ri-shopping-cart-fill cart" onClick={() => removeCartItem(imgObj)}></i>
+    function cartIcon() {
+        if (isInCart()) {
+            return <i className="ri-shopping-cart-fill cart" onClick={() => removeCartItem(imgObj)}></i>
+        } else if (hovered) {
+            return <i className="ri-add-circle-line cart" onClick={() => addCartItem(imgObj)}></i>
+        }
+    }
+
 
     return (
         <div
@@ -28,10 +35,8 @@ function Image({ imgObj, className }) {
             className={`${className} image-container`}
         >
             <img src={imgObj.url} className="image-grid" />
-            {heartIcon}
-            {favIcon}
-            {cartIcon}
-            {inCartIcon}
+            {heartIcon()}
+            {cartIcon()}
         </div>
     )
 }
