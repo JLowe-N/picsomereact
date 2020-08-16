@@ -11,9 +11,11 @@ function AppContextProvider({ children }) {
         async function fetchData() {
             const response = await fetch(url);
             const data = await response.json();
-            setPhotos(data);
+            //setPhotos(data);
+            return data;
         }
-        fetchData();
+        fetchData()
+            .then((data) => setPhotos(data));
     }, []) // Fetch on mount only
 
     function toggleFavorite(id) {
