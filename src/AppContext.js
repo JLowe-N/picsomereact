@@ -3,9 +3,9 @@ import React, { useState, useEffect } from "react"
 const AppContext = React.createContext();
 
 function AppContextProvider({ children }) {
-    const [photos, setPhotos] = useState([])
-    const [cartItems, setCartItems] = useState([])
-    const [totalCost, setTotalCost] = useState(0)
+    const [photos, setPhotos] = useState([]);
+    const [cartItems, setCartItems] = useState([]);
+    const [totalCost, setTotalCost] = useState(0);
 
     // Retrieve data with FETCH
     // Image json does not have alt-text, consider for future update
@@ -14,7 +14,6 @@ function AppContextProvider({ children }) {
         async function fetchData() {
             const response = await fetch(url);
             const data = await response.json();
-            //setPhotos(data);
             return data;
         }
         fetchData()
@@ -48,7 +47,7 @@ function AppContextProvider({ children }) {
     }, [cartItems]) // Fetch on mount only
 
     return (
-        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, removeCartItem, cartItems, totalCost }}>
+        <AppContext.Provider value={{ photos, toggleFavorite, addCartItem, removeCartItem, setCartItems, cartItems, totalCost }}>
             {children}
         </AppContext.Provider>
     )
