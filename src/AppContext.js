@@ -33,12 +33,10 @@ function AppContextProvider({ children }) {
 
     function addCartItem(img) {
         setCartItems(prevCart => ([...prevCart, img]))
-        console.log(`Adding img to cart ${img.id}`)
     }
 
-    function removeCartItem(img) {
-        setCartItems(prevCart => prevCart.filter(item => item.id === !img.id))
-        console.log(`Removing img from cart ${img.id}`)
+    function removeCartItem(id) {
+        setCartItems(prevCart => prevCart.filter(item => item.id !== id))
     }
 
     return (
