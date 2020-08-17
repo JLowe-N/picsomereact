@@ -15,7 +15,7 @@ function Header() {
 
     return (
         <header>
-            <Link to='/'>
+            <Link to='/picsomereact'>
                 <h2>Pic Some</h2>
             </Link>
             <Link to='/cart'>

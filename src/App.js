@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import Cart from './pages/Cart';
 import Photos from './pages/Photos';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 function App() {
   return (
@@ -11,7 +11,8 @@ function App() {
       <Header />
 
       <Switch>
-        <Route exact path="/">
+        <Redirect exact from="/" to="/picsomereact" />
+        <Route exact path="/picsomereact">
           <Photos />
         </Route>
         <Route exact path="/cart">
